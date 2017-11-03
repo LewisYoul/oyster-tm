@@ -2,7 +2,7 @@ require 'journeylog'
 
 describe JourneyLog do
   let(:station) { double(:station) }
-  let(:journey) { double(:journey) }
+  let(:journey) { double(:journey, set_exit_station: station, set_entry_station: station) }
   let(:mock_journey_class) { double(:mock_journey_class, new: journey) }
   subject(:journey_log) { described_class.new(mock_journey_class) }
 
@@ -18,12 +18,22 @@ describe JourneyLog do
 
   describe '#start' do
     it 'should start journey with an entry station' do
-      expect(subject.start(station)).to eq(journey)
+      expect(subject.start(station)).to eq(station)
     end
     it "should accept one argument" do
       expect(subject).to respond_to(:start).with(1).argument
     end
   end
+  describe ' #finish' do
+    it 'should accept 1 argument' do
+      expect(subject).to respond_to(:finish).with(1).argument
+    end
+    it "should set journey exit station" do
+      subject.start(station)
+      expect(subject.finish(station)).to eq(station)
+    end
+  end
+
 end
 
 
