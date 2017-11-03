@@ -9,9 +9,15 @@ class JourneyLog
   end
 
   def start(start_station)
-    @journey_class.new(start_station)
+    @trip = @journey_class.new(start_station)
   end
 
+  private
+
+  def current_journey
+    @trip
+  end
+  
 end
 
 
