@@ -8,6 +8,10 @@ class Journeylog
     @journey_class = journey_class
   end
 
+  def start
+    journey = @journey_class.new
+  end
+
 end
 
 
