@@ -24,13 +24,21 @@ describe JourneyLog do
       expect(subject).to respond_to(:start).with(1).argument
     end
   end
+
   describe ' #finish' do
     it 'should accept 1 argument' do
       expect(subject).to respond_to(:finish).with(1).argument
     end
-    it "should set journey exit station" do
+  end
+
+  describe "#journey_history" do
+    it "should be an empty array" do
+      expect(subject.journey_history).to be_an_instance_of(Array)
+    end
+    it "should contain a journey" do
       subject.start(station)
-      expect(subject.finish(station)).to eq(station)
+      subject.finish(station)
+      expect(subject.journey_history[0]).to eq(journey)
     end
   end
 
