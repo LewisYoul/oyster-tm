@@ -8,7 +8,9 @@ describe Journeylog do
       expect(subject).to be_an_instance_of(Journeylog)
     end
   end
-
+  it 'should have journey class parameter' do
+    expect(subject.journey_class).to eq nil
+  end
 end
 
 

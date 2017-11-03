@@ -1,6 +1,9 @@
 require 'journey'
 
 class Journeylog
+
+  attr_reader :journey_class
+
 end
 
 
