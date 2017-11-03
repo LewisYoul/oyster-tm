@@ -44,10 +44,6 @@ class Oystercard
     @balance < MINIMUM_FARE
   end
 
-  def deduct(cost)
-    @balance -= cost
-  end
-
   def add_journey_to_history
     @journey_history << @journey
   end
@@ -72,6 +68,10 @@ class Oystercard
 
   def charge_fare
     deduct(@journey.fare)
+  end
+
+  def deduct(cost)
+    @balance -= cost
   end
 
 end

@@ -1,15 +1,16 @@
 require 'journeylog'
 
 describe Journeylog do
-
+  let(:mock_journey_class) { double(:mock_journey_class) }
+  subject(:journey_log) { described_class.new(mock_journey_class) }
 
   describe '#initialize' do
     it 'should be an instance of journeylog class' do
       expect(subject).to be_an_instance_of(Journeylog)
     end
   end
-  it 'should have journey class parameter' do
-    expect(subject.journey_class).to eq nil
+  it "should be the class Journey" do
+    expect(subject.journey_class).to eq(mock_journey_class)
   end
 end
 
